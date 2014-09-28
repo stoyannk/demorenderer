@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ClearRenderingRoutine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="precompiled.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PresentRoutine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoRendererApplication.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PolygonizeRoutine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugLightsRoutine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawRoutine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLightsRoutine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ZPrepassRoutine.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialTable.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ClearRenderingRoutine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="precompiled.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PresentRoutine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoRendererApplication.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PolygonizeRoutine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawRoutine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedRenderResources.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLightsRoutine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZPrepassRoutine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstBufferTypes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugLightsRoutine.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialTable.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GPUProfiling.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{b9b58501-73fb-4f3d-bc4b-4d894d00f01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{55ae5174-ae6d-4e69-9fd3-bcd02c665c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{102172ec-45e6-4cf0-bb23-844a1bcd9e8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Generators">
+      <UniqueIdentifier>{4e9fec18-7c4d-4e19-a615-6039bac27046}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\Polygonizer.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\Simple.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\MCTables.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\DebugDraw.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\DrawLight.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ForwardDraw.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\TileLights.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\Generators\Sphere.hlsl">
+      <Filter>Shaders\Generators</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ForwardDrawDefs.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ForwardDrawProcedural.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PolygonizerCommon.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\Generators\Surface.hlsl">
+      <Filter>Shaders\Generators</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\PolygonizerHelpers.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
