@@ -162,7 +162,12 @@ void CSTileLights(
 	frustum[5] = float4(0, 0, -1, 5000);*/
 
 	// Count
-	for (uint lightId = localTid; lightId < LightsCount; lightId += GROUP_SIZE*GROUP_SIZE) {
+	// NB: The loop here is somewhat weird because when using a normal for, the shader compiler
+	// optimizes the structured buffer loads incorrectly!
+	uint lightId = localTid;
+	for (;;) {
+		if (lightId >= LightsCount)
+			break;
 		PointLightProperties light = PointLightsIn[lightId];
 
 		float4 lightPosInView = mul(float4(light.PositionAndRadius.xyz, 1.0), View);
@@ -180,6 +185,7 @@ void CSTileLights(
 
 			LightIdsGroup[slot] = lightId;
 		}
+		lightId += GROUP_SIZE*GROUP_SIZE;
 	}
 
 	GroupMemoryBarrierWithGroupSync();
