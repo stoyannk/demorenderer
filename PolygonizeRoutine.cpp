@@ -57,23 +57,25 @@ bool PolygonizeRoutine::Initialize(Renderer* renderer, Camera* camera, Scene* sc
 	}
 
 	const char* toCompile[] = {
+		"../Shaders/PolygonizerHelpers.hlsl",
 		"InitCounters",
+		"../Shaders/PolygonizerFinalizer.hlsl",
 		"FinalizeCounters"
 	};
 	ReleaseGuard<ID3D11ComputeShader>* shaders[] = {
 		&m_InitCS,
 		&m_FinalizeCS
 	};
-	static_assert(_countof(toCompile) == _countof(shaders), "Count of funcs and receiving shaders must coincide");
+	static_assert(_countof(toCompile) == _countof(shaders) * 2, "Count of funcs and receiving shaders must coincide");
 
-	for (auto i = 0; i < _countof(toCompile); ++i) {
+	for (auto i = 0; i < _countof(toCompile) / 2; ++i) {
 		ReleaseGuard<ID3DBlob> compiled;
-		if (!shaderManager.CompileShaderFromFile("../Shaders/PolygonizerHelpers.hlsl",
-			toCompile[i],
+		if (!shaderManager.CompileShaderFromFile(toCompile[i * 2],
+			toCompile[i * 2 + 1],
 			"cs_5_0",
 			compiled.Receive()))
 		{
-			SLOG(Sev_Error, Fac_Rendering, "Unable to compile polygonizer func ", toCompile[i]);
+			SLOG(Sev_Error, Fac_Rendering, "Unable to compile polygonizer func ", toCompile[i * 2 + 1]);
 			return false;
 		}
 		shaders[i]->Set(shaderManager.CreateComputeShader(compiled.Get(), nullptr));
@@ -154,11 +156,12 @@ bool PolygonizeRoutine::Render(float deltaTime)
 			if (!shader)
 				continue;
 
-			ID3D11UnorderedAccessView* uavs[] = { mesh->GetVertexBufferUAV(), mesh->GetIndexBufferUAV(), mesh->GetIndirectBufferUAV(), mesh->GetCountersBufferUAV() };
-			ID3D11ShaderResourceView* cellSRV[] = { m_CellDataSRV.Get(), m_VertexDataSRV.Get(), m_RandomTexture->GetSHRV() };
-			context->CSSetUnorderedAccessViews(0, _countof(uavs), uavs, nullptr);
-			context->CSSetShaderResources(0, _countof(cellSRV), cellSRV);
-
+			{
+				ID3D11UnorderedAccessView* uavs[] = { mesh->GetVertexBufferUAV(), mesh->GetIndexBufferUAV(), mesh->GetIndirectBufferUAV(), mesh->GetCountersBufferUAV() };
+				ID3D11ShaderResourceView* cellSRV[] = { m_CellDataSRV.Get(), m_VertexDataSRV.Get(), m_RandomTexture->GetSHRV() };
+				context->CSSetUnorderedAccessViews(0, _countof(uavs), uavs, nullptr);
+				context->CSSetShaderResources(0, _countof(cellSRV), cellSRV);
+			}
 			// Init
 			context->CSSetShader(m_InitCS.Get(), nullptr, 0);
 			context->Dispatch(1, 1, 1);
@@ -169,6 +172,12 @@ bool PolygonizeRoutine::Render(float deltaTime)
 			context->Dispatch(dispatch.x, dispatch.y, dispatch.z);
 
 			// Finalize
+			{
+				ID3D11UnorderedAccessView* uavs[] = { mesh->GetIndirectBufferUAV(), nullptr, nullptr, nullptr };
+				ID3D11ShaderResourceView* cellSRV[] = { mesh->GetCountersSRV(), nullptr, nullptr, nullptr };
+				context->CSSetUnorderedAccessViews(0, _countof(uavs), uavs, nullptr);
+				context->CSSetShaderResources(0, _countof(cellSRV), cellSRV);
+			}
 			context->CSSetShader(m_FinalizeCS.Get(), nullptr, 0);
 			context->Dispatch(1, 1, 1);
 		}
