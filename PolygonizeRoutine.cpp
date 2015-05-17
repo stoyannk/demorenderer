@@ -86,7 +86,7 @@ bool PolygonizeRoutine::Initialize(Renderer* renderer, Camera* camera, Scene* sc
 	}
 
 	auto& textureManager = m_Renderer->GetTextureManager();
-	m_RandomTexture = textureManager.Load("../media/textures/random.png");
+	m_RandomTexture = textureManager.Load("../media/textures/random.dds");
 	if (!m_RandomTexture)
 	{
 		SLOG(Sev_Error, Fac_Rendering, "Unable to load random texture!");

@@ -1,36 +1,36 @@
 {
 	"properties" : [
-		{ "grass.png" : { "UVScale" : 8 } },
-		{ "canyon.jpg" : { "UVScale" : 8 } },
-		{ "snow.jpg" : { "UVScale" : 8 } },
-		{ "Deep-Freeze.jpg" : { "UVScale" : 8 } },
-		{ "dry_grass.jpg" : { "UVScale" : 8 } },
-		{ "sand.jpg" : { "UVScale" : 8 } },
-		{ "sand_stone.jpg" : { "UVScale" : 8 } },
-		{ "calcare.jpg" : { "UVScale" : 8 } },
-		{ "grey_stone.jpg" : { "UVScale" : 8 } }
+		{ "grass.dds" : { "UVScale" : 8 } },
+		{ "canyon.dds" : { "UVScale" : 8 } },
+		{ "snow.dds" : { "UVScale" : 8 } },
+		{ "Deep-Freeze.dds" : { "UVScale" : 8 } },
+		{ "dry_grass.dds" : { "UVScale" : 8 } },
+		{ "sand.dds" : { "UVScale" : 8 } },
+		{ "sand_stone.dds" : { "UVScale" : 8 } },
+		{ "calcare.dds" : { "UVScale" : 8 } },
+		{ "grey_stone.dds" : { "UVScale" : 8 } }
 	],
 	
 	"materials" : [
 		{
-			"diffuse0" : [ "grass.png", "canyon.jpg", "canyon.jpg" ],
-			"diffuse1" : [ "snow.jpg", "Deep-Freeze.jpg", "Deep-Freeze.jpg" ]
+			"diffuse0" : [ "grass.dds", "canyon.dds", "canyon.dds" ],
+			"diffuse1" : [ "snow.dds", "Deep-Freeze.dds", "Deep-Freeze.dds" ]
 		},
 		{
-			"diffuse0" : [ "grass.png", "canyon.jpg", "canyon.jpg" ],
-			"diffuse1" : [ "dry_grass.jpg", "canyon.jpg", "canyon.jpg" ]
+			"diffuse0" : [ "grass.dds", "canyon.dds", "canyon.dds" ],
+			"diffuse1" : [ "dry_grass.dds", "canyon.dds", "canyon.dds" ]
 		},
 		{
-			"diffuse0" : [ "grass.png", "canyon.jpg", "canyon.jpg" ],
-			"diffuse1" : [ "sand.jpg", "sand_stone.jpg", "sand_stone.jpg" ]
+			"diffuse0" : [ "grass.dds", "canyon.dds", "canyon.dds" ],
+			"diffuse1" : [ "sand.dds", "sand_stone.dds", "sand_stone.dds" ]
 		},
 		{
-			"diffuse0" : [ "dry_grass.jpg", "grey_stone.jpg", "grey_stone.jpg" ],
-			"diffuse1" : [ "sand.jpg", "sand_stone.jpg", "sand_stone.jpg" ]
+			"diffuse0" : [ "dry_grass.dds", "grey_stone.dds", "grey_stone.dds" ],
+			"diffuse1" : [ "sand.dds", "sand_stone.dds", "sand_stone.dds" ]
 		},
 		{
-			"diffuse0" : [ "dry_grass.jpg", "grey_stone.jpg", "grey_stone.jpg" ],
-			"diffuse1" : [ "sand.jpg", "calcare.jpg", "calcare.jpg" ]
+			"diffuse0" : [ "dry_grass.dds", "grey_stone.dds", "grey_stone.dds" ],
+			"diffuse1" : [ "sand.dds", "calcare.dds", "calcare.dds" ]
 		}
 	]
 }

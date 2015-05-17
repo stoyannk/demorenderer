@@ -3,6 +3,6 @@
 #include <Utilities/CoreIncludes.h>
 
 #include <DirectXMath.h>
-#include <D3DX11tex.h>
+#include <ThirdParty/DirectXTex/DirectXTex.h>
 
 //#define ENABLE_GPU_PROFILING

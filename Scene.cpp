@@ -7,6 +7,7 @@
 #include <Dx11/Rendering/Camera.h>
 #include <Dx11/Rendering/MeshLoader.h>
 #include <Dx11/Rendering/FrustumCuller.h>
+#include <Dx11/Rendering/MeshSDF.h>
 
 #include <Utilities/Random.h>
 
@@ -29,11 +30,12 @@ bool Scene::Initialize()
 {
 	std::string errors;
 
+	MeshSDF sponzaSDF(glm::u32vec3(512u));
 	Entity sponza;
 	sponza.Position = XMFLOAT3A(0, 0, 0);
 	sponza.Scale = 1.0f;
 	sponza.Rotation = XMQuaternionIdentity();
-	sponza.Mesh.reset(MeshLoader::LoadMesh(static_cast<DxRenderer*>(m_Renderer), "..\\..\\media\\saves\\sponza.rmesh", errors));
+	sponza.Mesh.reset(MeshLoader::LoadMesh(static_cast<DxRenderer*>(m_Renderer), "..\\..\\media\\saves\\sponza.rmesh", errors, &sponzaSDF));
 	//m_Sponza.reset(MeshLoader::LoadMesh(static_cast<DxRenderer*>(m_Renderer), "..\\..\\media\\sponza.obj", errors));
 	if (!sponza.Mesh.get())
 	{
@@ -43,6 +45,7 @@ bool Scene::Initialize()
 	else
 	{
 		STLOG(Logging::Sev_Warning, Logging::Fac_Rendering, std::tie("Sponza model loaded (warnings): ", errors));
+		STLOG(Logging::Sev_Info, Logging::Fac_Rendering, std::make_tuple("Sponza model triangles: ", sponza.Mesh->GetTrianglesCount()));
 	}
 
 	//MeshSaver::SaveMesh(static_cast<DxRenderer*>(m_Renderer), m_Sponza.get(), "..\\..\\media\\saves\\sponza.rmesh", errors);
